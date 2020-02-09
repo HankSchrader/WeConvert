@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    // MARK: Constants
     let feetToMile = 5280
     let feetToKm = 3280.84
     let meterToKm = 1000.0
@@ -19,12 +21,17 @@ struct ContentView: View {
     let milesToMeters = 0.000621371
     let kmToFeet = 0.0003048
     let feetToMeter = 0.3048
+    let measurementOptions: [String] = ["Kilometer", "Meteres", "Miles", "Feet",]
+    let measurementOptionsOutput: [String] = ["Kilometer", "Meteres", "Miles", "Feet"]
+    
+    // MARK: States
+    
     @State private var inputDistance = ""
     @State private var inputMeasurment = 1
     @State private var outputMeasurment = 1
-    let measurementOptions: [String] = ["Kilometer", "Meteres", "Miles", "Feet",]
-    let measurementOptionsOutput: [String] = ["Kilometer", "Meteres", "Miles", "Feet"]
-// Text("$\(totalPerPerson, specifier: "%.2f")")
+
+    
+    // MARK: Output
     var output: Text {
         var finalOutput: Double = 0
          let inputDistanceInt = Int(inputDistance) ?? 0
@@ -76,6 +83,7 @@ struct ContentView: View {
         default:
             finalOutput =  -1
         }
+        
         if (finalOutput - finalOutput.rounded() != 0) {
             return Text("\(finalOutput, specifier: "%.3f")")
         }
@@ -84,6 +92,8 @@ struct ContentView: View {
    
     }
     
+    
+    // MARK: Body
     var body: some View {
         NavigationView {
             Form{
